@@ -1,0 +1,141 @@
+package bacteriopruebas;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Pruebas<E> {
+
+    private List<E> lista;
+
+    // Constructor
+    public Pruebas() {
+        lista = new ArrayList<>();
+    }
+
+    // Añadir un elemento al final de la lista
+    public boolean add(E e) {
+        return lista.add(e);
+    }
+
+    // Insertar un elemento en una posición específica
+    public void add(int index, E element) {
+        lista.add(index, element);
+    }
+
+    // Eliminar todos los elementos de la lista
+    public void clear() {
+        lista.clear();
+    }
+
+    // Verificar si la lista contiene un elemento específico
+    public boolean contains(Object o) {
+        return lista.contains(o);
+    }
+
+    // Obtener el elemento en una posición específica
+    public E get(int posicion) {
+        return lista.get(posicion);
+    }
+
+    // Obtener el índice de la primera ocurrencia de un elemento
+    public int indexOf(Object o) {
+        return lista.indexOf(o);
+    }
+
+    // Verificar si la lista está vacía
+    public boolean isEmpty() {
+        return lista.isEmpty();
+    }
+
+    // Obtener el índice de la última ocurrencia de un elemento
+    public int lastIndexOf(Object o) {
+        return lista.lastIndexOf(o);
+    }
+
+    // Eliminar el elemento en una posición específica
+    public E remove(int posicion) {
+        return lista.remove(posicion);
+    }
+
+    // Eliminar la primera ocurrencia de un elemento
+    public boolean remove(Object o) {
+        return lista.remove(o);
+    }
+
+    // Reemplazar el elemento en una posición específica
+    public E set(int posicion, E element) {
+        return lista.set(posicion, element);
+    }
+
+    // Obtener el tamaño de la lista
+    public int size() {
+        return lista.size();
+    }
+
+    // Obtener una sublista entre dos índices
+    public List<E> subList(int desdePosicion, int hastaPosicion) {
+        return lista.subList(desdePosicion, hastaPosicion);
+    }
+
+    // Convertir la lista a un array
+    public Object[] toArray() {
+        return lista.toArray();
+    }
+
+    // Método para mostrar los elementos de la lista
+    public void mostrarLista() {
+        System.out.println("Lista: " + lista);
+    }
+
+    public static void main(String[] args) {
+        Pruebas<String> miLista = new Pruebas<>();
+
+        // Añadir elementos
+        miLista.add("Apple");
+        miLista.add("Banana");
+        miLista.add("Cherry");
+        miLista.add(1, "Orange"); // Insertar "Orange" en la posición 1
+
+        // Mostrar lista
+        miLista.mostrarLista();
+
+        // Verificar si contiene un elemento
+        System.out.println("¿Contiene 'Banana'? " + miLista.contains("Banana"));
+
+        // Obtener un elemento por posición
+        System.out.println("Elemento en posición 2: " + miLista.get(2));
+
+        // Eliminar un elemento
+        miLista.remove("Banana");
+
+        // Mostrar lista después de eliminación
+        miLista.mostrarLista();
+
+        // Reemplazar un elemento
+        miLista.set(1, "Grapes");
+
+        // Mostrar lista después de reemplazo
+        miLista.mostrarLista();
+
+        // Mostrar el índice de un elemento
+        System.out.println("Índice de 'Cherry': " + miLista.indexOf("Cherry"));
+
+        // Crear sublista
+        List<String> sublista = miLista.subList(0, 2);
+        System.out.println("Sublista: " + sublista);
+
+        // Convertir la lista a array
+        Object[] array = miLista.toArray();
+        System.out.println("Array de la lista: ");
+        for (Object obj : array) {
+            System.out.println(obj);
+        }
+
+        // Verificar si la lista está vacía
+        System.out.println("¿Está vacía la lista? " + miLista.isEmpty());
+
+        // Limpiar la lista
+        miLista.clear();
+        System.out.println("Lista después de limpiar: ");
+        miLista.mostrarLista();
+    }
+}
