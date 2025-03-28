@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+
+public class Palindromo {
+    
+    private String frase;
+    
+    // Constructor que recibe la frase
+    public Palindromo(String frase) {
+        this.frase = frase;
+    }
+
+    // Método que verifica si la frase es un palíndromo
+    public boolean esPalindromo() {
+        // Convertir la frase a minúsculas y eliminar los espacios
+        frase = frase.replaceAll("[\\W_]+", "").toLowerCase();
+        
+        ArrayList<Character> lista = new ArrayList<>();
+        
+        // Llenamos el ArrayList con los caracteres de la frase
+        for (int i = 0; i < frase.length(); i++) {
+            lista.add(frase.charAt(i));
+        }
+        
+        // Comparamos los caracteres desde los extremos
+        int i = 0;
+        int j = lista.size() - 1;
+        
+        while (i < j) {
+            if (!lista.get(i).equals(lista.get(j))) {
+                return false; // Si encontramos una diferencia, no es palíndromo
+            }
+            i++;
+            j--;
+        }
+        
+        return true; // Si no encontramos diferencias, es un palíndromo
+    }
+
+    public static void main(String[] args) {
+        Palindromo palindromo = new Palindromo("Anita lava la tina");
+        if (palindromo.esPalindromo()) {
+            System.out.println("La frase es un palíndromo.");
+        } else {
+            System.out.println("La frase no es un palíndromo.");
+        }
+    }
+}
