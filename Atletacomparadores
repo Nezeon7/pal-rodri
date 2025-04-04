@@ -1,0 +1,77 @@
+package atletacomparatoreinterface;
+public class Atleta implements Comparable<Atleta> {
+    private String nombre;
+    private int tiempo;
+    private int edad;
+
+    public Atleta(String nombre, int tiempo, int edad) {
+        this.nombre = nombre;
+        this.tiempo = tiempo;
+        this.edad = edad;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public int compareTo(Atleta otroAtleta) {
+        return Integer.compare(this.tiempo, otroAtleta.tiempo);
+    }
+
+    public String toString() {
+        return nombre + " - " + tiempo + " segundos";
+    }
+}
+
+
+//////COMPARATOREDADES
+
+
+package atletacomparatoreinterface;
+import java.util.Comparator;
+
+public class ComparatorEdades implements Comparator<Atleta> {
+
+    public int compare(Atleta a1, Atleta a2) {
+        return Integer.compare(a1.getEdad(), a2.getEdad());
+    }
+}
+
+
+
+///////// CLASE MAIN
+
+package atletacomparatoreinterface;
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        Atleta[] atletas = {
+            new Atleta("Ana", 15, 26),
+            new Atleta("Sofía", 12, 22),
+            new Atleta("Carlos", 12, 30),
+            new Atleta("Luis", 15, 28)
+        };
+
+        Arrays.sort(atletas);
+        
+        System.out.println("Atletas ordenados por tiempo:");
+        for (Atleta atleta : atletas) {
+            System.out.println(atleta);
+        }
+        
+        Arrays.sort(atletas, new ComparatorEdades());
+        
+        System.out.println("\nAtletas ordenados por edad:");
+        for (Atleta atleta : atletas) {
+            System.out.println(atleta.getNombre() + " - Edad: " + atleta.getEdad());
+        }
+    }
